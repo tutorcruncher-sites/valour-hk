@@ -1,0 +1,375 @@
+---
+---
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
+
+$primary-first-colour: #016997;
+$primary-second-colour: #DFE0E1;
+$secondary-first-colour: #00FFFF;
+$secondary-second-colour: #F0A120;
+
+$font-family: Ubuntu,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+body {
+  overflow-x: hidden;
+  font-family: $font-family;
+  color: $primary-first-colour;
+}
+
+p, li {
+  font-size: 20px;
+  &.small {
+    font-size: 16px;
+  }
+}
+
+li {
+  list-style-type: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family;
+  font-weight: 700;
+}
+
+hr {
+  margin: 25px auto 30px;
+  padding: 0;
+  max-width: 250px;
+  border: 0;
+  border-top: solid 5px;
+  text-align: center;
+  @media (max-width: 767px) {
+    max-width: 75px;
+    border-top: solid 3px;
+    margin: 15px auto;
+  }
+}
+
+.primary-light {
+  p, h2, h3, a, li {
+    color: $primary-first-colour;
+  }
+  .btn {
+    border: solid 2px $primary-first-colour;
+    &:hover, &:focus, &:active, &.active {
+      border: solid 2px $primary-first-colour;
+      color: white;
+      background: $primary-first-colour;
+    }
+  }
+}
+
+.primary-dark {
+  background-color: $primary-first-colour;
+  p, h2, h3, a, li {
+    color: white;
+  }
+  hr {
+    border-color: white;
+  }
+  .btn {
+    border: solid 2px white;
+    &:hover, &:focus, &:active, &.active {
+      border: solid 2px white;
+      color: $primary-first-colour;
+      background: white;
+    }
+  }
+}
+
+header {
+  text-align: center;
+  color: white;
+  background:
+    linear-gradient(
+      rgba(21, 43, 117, 0.3),
+      rgba(21, 43, 117, 0.3)
+    ),url('/static/img/header.jpg') bottom right/ 100% auto no-repeat;
+  .container {
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+  .intro-text {
+    h1 {
+      font-size: 2.5em;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 22px;
+    }
+  }
+  @media (min-width: 768px) {
+    min-height: 700px;
+    .container {
+      padding-top: 200px;
+      padding-bottom: 100px;
+    }
+    .intro-text {
+      h1 {
+        font-size: 4.75em;
+      }
+    }
+  }
+}
+
+.navbar-default {
+  text-transform: uppercase;
+  font-weight: 700;
+  background: none;
+  border-bottom: none;
+  padding: 20px;
+  .navbar-brand {
+    height: 55px;
+    padding: 0;
+    #navbar-logo {
+      width: auto;
+      height: 55px;
+    }
+  }
+  .navbar-nav>li>a {
+    color: white;
+    &:focus {
+      outline: 0;
+    }
+    &:hover {
+      color: lighten($primary-first-colour, 20%);
+    }
+  }
+  .navbar-nav {
+    letter-spacing: 1px;
+    li a:focus {
+      outline: 0;
+    }
+  }
+  .tcs-enquiry-modal {
+    .tcs-centre {
+      color: $primary-first-colour;
+    }
+    .tcs-enquiry-button {
+      background: none;
+      color: $primary-first-colour;
+      margin-top: 3px;
+      @media (min-width: 768px) {
+        color: white;
+        background: $primary-first-colour;
+        border: solid 2px $primary-first-colour;
+        &:hover {
+          color: $primary-first-colour;
+          background: transparent;
+          text-decoration: none !important;
+        }
+      }
+    }
+    .tcs-submit {
+      button {
+        background: $primary-first-colour;
+        border: solid 2px $primary-first-colour;
+        &:hover {
+          color: $primary-first-colour;
+          background: transparent;
+          text-decoration: none !important;
+        }
+      }
+    }
+  }
+  &.affix {
+    background: $primary-first-colour;
+    transition: all 0.5s ease-in-out;
+    padding: 10px 0;
+    .tcs-enquiry-modal {
+      padding-top: 3px;
+      .tcs-enquiry-button {
+        color: white;
+        border-color: white;
+        margin-top: 0;
+        &:hover {
+          color: $primary-first-colour;
+          background: white;
+          text-decoration: none !important;
+        }
+      }
+    }
+    #navbar-logo {
+      content:url("/static/img/logo.png")
+    }
+  }
+  @media (max-width: 767px) {
+    padding: 0;
+    background: $primary-first-colour;
+    #navbar-logo {
+      content: url("/static/img/logo.png");
+      padding: 10px;
+    }
+    .tcs-enquiry-modal {
+      .tcs-enquiry-button {
+        color: white;
+      }
+    }
+    &.affix {
+      padding: 0;
+      .tcs-enquiry-modal {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+.navbar-default .navbar-nav > .active > a {
+  color: lighten($primary-first-colour, 20%);
+  background-color: $primary-first-colour;
+  &:hover {
+    background-color: $primary-first-colour;
+  }
+}
+
+section {
+  padding: 50px 0;
+  h2 {
+    margin: 0;
+    font-size: 3em;
+    @media (max-width: 767px) {
+      font-size: 2.5em;
+    }
+  }
+  &.success {
+    color: white;
+    background: $primary-first-colour;
+  }
+  @media (max-width: 767px) {
+    padding: 30px 0;
+    &.first {
+      padding-top: 75px;
+    }
+  }
+}
+
+section#our-tutors {
+  .tcs-box {
+    background-color: white;
+    .tcs-name {
+      border: 1px solid white;
+      color: $primary-first-colour;
+    }
+    &:hover {
+      transition: all .5s ease-in-out;
+      .tcs-name {
+        color: white;
+      }
+      background-color: $primary-first-colour;
+    }
+  }
+  .socket-container {
+    max-width: 970px;
+    margin: 0 auto;
+    .tcs-box {
+      box-shadow: None;
+      .tcs-name {
+        border-radius: 0 0 3px 3px;
+        transition: all .5s ease;
+        padding: 5px 0;
+      }
+      &:hover {
+        text-decoration: none !important;
+      }
+    }
+    .tcs-modal {
+      h2 {
+        color: $primary-first-colour;
+      }
+      .tcs-skills {
+        span {
+          background: $primary-first-colour;
+        }
+      }
+      button {
+        background: white;
+        color: $primary-first-colour;
+        border: solid 2px $primary-first-colour;
+        &:hover, &:focus, &:active, &.active {
+          border: solid 2px $primary-first-colour;
+          color: white;
+          background: $primary-first-colour;
+        }
+      }
+    }
+  }
+}
+
+h3 .tutor-signup {
+  font-size: 28px;
+  font-weight: 600 !important;
+  padding-bottom: 20px;
+}
+
+.btn-social {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 20px;
+  line-height: 45px;
+  &:hover {
+    color: $primary-first-colour;
+    background-color: white;
+  }
+}
+
+footer {
+  &.primary-dark {
+    background-color: #4678AE;
+  }
+  h3 {
+    margin-bottom: 30px;
+  }
+  .footer-above {
+    padding-top: 50px;
+  }
+  .footer-col {
+    text-align: left;
+    margin-bottom: 50px;
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+    }
+  }
+  .footer-below {
+    padding: 0 0 25px 0;
+    color: white;
+  }
+  @media (max-width: 767px) {
+    .footer-above {
+      padding: 0;
+      .footer-col {
+        p, a {
+          font-size: 16px;
+        }
+        h3 {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+a {
+  color: $primary-first-colour;
+  outline: 0;
+  &:hover, &:focus, &:active, &.active {
+    outline: 0;
+    color: $primary-first-colour;
+  }
+}
+
+.container.main {
+  padding-top: 75px;
+  padding-bottom: 50px;
+  &.narrow {
+    max-width: 970px;
+  }
+}

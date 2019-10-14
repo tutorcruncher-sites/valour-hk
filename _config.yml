@@ -1,0 +1,43 @@
+title: Example Site
+email: info@fake.com
+description: Site Description
+baseurl: ''
+url: url
+meta_author: Tom Hamilton Stubber
+
+# Build settings
+markdown: kramdown
+theme: minima
+permalink: pretty
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+include:
+  - _redirects
+footer:
+  copyright:
+address:
+  - Address Line 1
+  - Address Line 2
+phone: 1-555-444-444
+social:
+  - title: twitter
+    url:
+  - title: facebook
+    url:
+  - title: instagram
+    url:
+  - title: linkedin
+    url:
+  - title: google
+    url:
+  - title: pinterest
+    url:
+  - title: youtube
+    url:
+office_hours:
+  - "Mon - Fri: 9am - 5pm"
+  - "Weekends: Closed"
+socket_key: '9c79f14df986a1ec693c'
+tutorcruncher_url: https://secure.tutorcruncher.com/jarvislearning

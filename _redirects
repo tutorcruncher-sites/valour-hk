@@ -1,0 +1,3 @@
+# single page app behaviour for the socket plugin
+/enquiry /                                 200
+/*/enquiry  /:splat                        200
