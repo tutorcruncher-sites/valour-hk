@@ -1,9 +1,113 @@
 <!DOCTYPE html>
 <html>
-  {% include head.html %}
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+      <link rel="apple-touch-icon" sizes="152x152" href="/static/img/favicons/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicons/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicons/favicon-16x16.png">
+      <link rel="manifest" href="/static/img/favicons/site.webmanifest">
+      <link rel="mask-icon" href="/static/img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+      <link rel="shortcut icon" href="/static/img/favicons/favicon.ico">
+      <meta name="msapplication-TileColor" content="#2d89ef">
+      <meta name="msapplication-config" content="/static/img/favicons/browserconfig.xml">
+      <meta name="theme-color" content="#ffffff">
+
+      <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="description" content="{{ site.description }}">
+      {% if site.meta_author %}<meta name="author" content="{{ site.meta_author }}">{% endif %}
+      <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+      <link rel="stylesheet" href="/static/css/style.css">
+  </head>
+
   <body id="page-top">
-    {% include nav.html %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="{% if page.url == '/' %}#{% else %}/{% endif %}">
+        <img id="navbar-logo" src="/static/img/logo.png"/>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" target="_blank" href="{% if page.url != '/'%}/{% endif %}#about">About</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" target="_blank" href="{% if page.url != '/'%}/{% endif %}#our-tutors">Our Tutors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" target="_blank" href="{{ site.tutorcruncher_url }}/">Log in</a>
+          </li>
+          <li class="nav-item">
+            <div id="socket-enquiry-modal"></div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
     {{ content }}
-    {% include footer.html %}
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="text-center mx-auto">
+          <h3>Valour HK Ltd</h3>
+          <p>
+            {{ site.address }}<br>
+            <b>{{ site.phone }}</b><br>
+            <b>{{ site.email }}</b>
+          </p>
+          <p class="text-muted">
+            Company Registration Number: xx-xx-xxx. VAT Number: xxx-xx-xxx.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    {% if site.ga_analytics_key %}
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '{{ site.ga_analytics_key }}', 'auto');
+        ga('send', 'pageview');
+      </script>
+    {% endif %}
+    {% if site.socket_key %}
+      <script src="https://cdn.tutorcruncher.com/socket/latest/socket.js"></script>
+      <script>
+        socket('{{ site.socket_key }}', {
+          mode: 'enquiry-modal',
+          element: '#socket-enquiry-modal',
+          router_mode: 'history'
+        })
+      </script>
+      <script>
+        socket('{{ site.socket_key }}', {
+          router_mode: 'history',
+          mode: 'grid',
+          pagination: 15,
+          messages: {
+            subject_filter_placeholder: 'Click here to filter our tutors by subject'
+          },
+          show_location_search: false,
+          event_callback: () => {
+            console.log('Loaded')
+          }
+        })
+      </script>
+    {% endif %}
+
   </body>
 </html>

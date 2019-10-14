@@ -1,21 +1,21 @@
 ---
 ---
 
-@import url(https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css);
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
-@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display|Raleway:400,700);
 
-$primary-first-colour: #016997;
-$primary-second-colour: #DFE0E1;
-$secondary-first-colour: #00FFFF;
-$secondary-second-colour: #F0A120;
+$primary: #10347c;
+$secondary: #fbf4f5;
+$tertiary: #F0A120;
 
-$font-family: Ubuntu,"Helvetica Neue",Helvetica,Arial,sans-serif;
+$font-family: "Raleway", "Helvetica Neue",Helvetica,Arial,sans-serif;
 
 body {
   overflow-x: hidden;
   font-family: $font-family;
-  color: $primary-first-colour;
+  color: #222;
+  background-color: $secondary;
 }
 
 p, li {
@@ -25,13 +25,13 @@ p, li {
   }
 }
 
-li {
-  list-style-type: none;
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", "Helvetica Neue",Helvetica,Arial,sans-serif;;
+  font-weight: 700;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family;
-  font-weight: 700;
+h3 {
+  font-size: 30px;
 }
 
 hr {
@@ -39,7 +39,7 @@ hr {
   padding: 0;
   max-width: 250px;
   border: 0;
-  border-top: solid 5px;
+  border-top: solid 1px;
   text-align: center;
   @media (max-width: 767px) {
     max-width: 75px;
@@ -48,49 +48,29 @@ hr {
   }
 }
 
-.primary-light {
-  p, h2, h3, a, li {
-    color: $primary-first-colour;
-  }
-  .btn {
-    border: solid 2px $primary-first-colour;
-    &:hover, &:focus, &:active, &.active {
-      border: solid 2px $primary-first-colour;
-      color: white;
-      background: $primary-first-colour;
-    }
+.btn {
+  border: solid 2px $primary;
+  color: white;
+  background: $primary;
+  transition: all .5s ease;
+  &:hover, &:focus, &:active, &.active {
+    color: $primary;
+    background: white;
   }
 }
 
+
 .primary-dark {
-  background-color: $primary-first-colour;
-  p, h2, h3, a, li {
-    color: white;
-  }
-  hr {
-    border-color: white;
-  }
-  .btn {
-    border: solid 2px white;
-    &:hover, &:focus, &:active, &.active {
-      border: solid 2px white;
-      color: $primary-first-colour;
-      background: white;
-    }
-  }
+  background-color: white;
 }
 
 header {
-  text-align: center;
-  color: white;
-  background:
-    linear-gradient(
-      rgba(21, 43, 117, 0.3),
-      rgba(21, 43, 117, 0.3)
-    ),url('/static/img/header.jpg') bottom right/ 100% auto no-repeat;
-  .container {
-    padding-top: 100px;
-    padding-bottom: 50px;
+  height: 200px;
+  background: url('/static/img/header2.jpg');
+  background-position: center;
+  background-size: 100%;
+  @media (max-width: 767px) {
+    height: 200px;
   }
   .intro-text {
     h1 {
@@ -102,7 +82,7 @@ header {
     }
   }
   @media (min-width: 768px) {
-    min-height: 700px;
+    min-height: 400px;
     .container {
       padding-top: 200px;
       padding-bottom: 100px;
@@ -115,49 +95,49 @@ header {
   }
 }
 
-.navbar-default {
+.navbar {
+  background-color: $secondary;
   text-transform: uppercase;
   font-weight: 700;
-  background: none;
   border-bottom: none;
   padding: 20px;
   .navbar-brand {
-    height: 55px;
-    padding: 0;
+    padding: 0 0 0 30px;
     #navbar-logo {
       width: auto;
-      height: 55px;
-    }
-  }
-  .navbar-nav>li>a {
-    color: white;
-    &:focus {
-      outline: 0;
-    }
-    &:hover {
-      color: lighten($primary-first-colour, 20%);
+      height: 60px;
     }
   }
   .navbar-nav {
     letter-spacing: 1px;
-    li a:focus {
-      outline: 0;
+    li {
+      padding-right: 20px;
+      a:hover {
+        color: lighten($primary, 20%);
+      }
+      a:focus {
+        outline: 0;
+      }
     }
+  }
+  #navbar {
+    padding-right: 20px;
+    padding-left: 20px;
   }
   .tcs-enquiry-modal {
     .tcs-centre {
-      color: $primary-first-colour;
+      color: $primary;
     }
     .tcs-enquiry-button {
       background: none;
-      color: $primary-first-colour;
+      color: $primary;
       margin-top: 3px;
       @media (min-width: 768px) {
         color: white;
-        background: $primary-first-colour;
-        border: solid 2px $primary-first-colour;
+        background: $primary;
+        border: solid 2px $primary;
         &:hover {
-          color: $primary-first-colour;
+          color: $primary;
           background: transparent;
           text-decoration: none !important;
         }
@@ -165,40 +145,19 @@ header {
     }
     .tcs-submit {
       button {
-        background: $primary-first-colour;
-        border: solid 2px $primary-first-colour;
+        background: $primary;
+        border: solid 2px $primary;
         &:hover {
-          color: $primary-first-colour;
+          color: $primary;
           background: transparent;
           text-decoration: none !important;
         }
       }
     }
   }
-  &.affix {
-    background: $primary-first-colour;
-    transition: all 0.5s ease-in-out;
-    padding: 10px 0;
-    .tcs-enquiry-modal {
-      padding-top: 3px;
-      .tcs-enquiry-button {
-        color: white;
-        border-color: white;
-        margin-top: 0;
-        &:hover {
-          color: $primary-first-colour;
-          background: white;
-          text-decoration: none !important;
-        }
-      }
-    }
-    #navbar-logo {
-      content:url("/static/img/logo.png")
-    }
-  }
   @media (max-width: 767px) {
     padding: 0;
-    background: $primary-first-colour;
+    background: $primary;
     #navbar-logo {
       content: url("/static/img/logo.png");
       padding: 10px;
@@ -208,20 +167,6 @@ header {
         color: white;
       }
     }
-    &.affix {
-      padding: 0;
-      .tcs-enquiry-modal {
-        padding-top: 0;
-      }
-    }
-  }
-}
-
-.navbar-default .navbar-nav > .active > a {
-  color: lighten($primary-first-colour, 20%);
-  background-color: $primary-first-colour;
-  &:hover {
-    background-color: $primary-first-colour;
   }
 }
 
@@ -236,7 +181,7 @@ section {
   }
   &.success {
     color: white;
-    background: $primary-first-colour;
+    background: $primary;
   }
   @media (max-width: 767px) {
     padding: 30px 0;
@@ -247,51 +192,53 @@ section {
 }
 
 section#our-tutors {
-  .tcs-box {
-    background-color: white;
-    .tcs-name {
-      border: 1px solid white;
-      color: $primary-first-colour;
-    }
-    &:hover {
-      transition: all .5s ease-in-out;
-      .tcs-name {
-        color: white;
-      }
-      background-color: $primary-first-colour;
-    }
-  }
   .socket-container {
-    max-width: 970px;
-    margin: 0 auto;
+    .tcs-col:hover {
+      text-decoration: none !important;
+    }
     .tcs-box {
       box-shadow: None;
+
       .tcs-name {
+        background-color: $primary;
+        border: 1px solid $primary;
         border-radius: 0 0 3px 3px;
         transition: all .5s ease;
         padding: 5px 0;
+        font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
+
       &:hover {
-        text-decoration: none !important;
-      }
-    }
-    .tcs-modal {
-      h2 {
-        color: $primary-first-colour;
-      }
-      .tcs-skills {
-        span {
-          background: $primary-first-colour;
+        transition: all .5s ease-in-out;
+
+        .tcs-name {
+          background-color: white;
+          color: $primary;
+          border: 1px solid $primary;
         }
       }
+    }
+
+    .tcs-modal {
+      h2 {
+        color: $primary;
+      }
+
+      .tcs-skills {
+        span {
+          background: $primary;
+        }
+      }
+
       button {
         background: white;
-        color: $primary-first-colour;
-        border: solid 2px $primary-first-colour;
+        color: $primary;
+        border: solid 2px $primary;
+
         &:hover, &:focus, &:active, &.active {
-          border: solid 2px $primary-first-colour;
+          border: solid 2px $primary;
           color: white;
-          background: $primary-first-colour;
+          background: $primary;
         }
       }
     }
@@ -314,7 +261,7 @@ h3 .tutor-signup {
   font-size: 20px;
   line-height: 45px;
   &:hover {
-    color: $primary-first-colour;
+    color: $primary;
     background-color: white;
   }
 }
@@ -358,11 +305,11 @@ footer {
 }
 
 a {
-  color: $primary-first-colour;
+  color: $primary;
   outline: 0;
   &:hover, &:focus, &:active, &.active {
     outline: 0;
-    color: $primary-first-colour;
+    color: $primary;
   }
 }
 
