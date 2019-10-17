@@ -3,13 +3,13 @@
 
 @import url(https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
-@import url(https://fonts.googleapis.com/css?family=Playfair+Display|Raleway:400,700);
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display|Raleway|Roboto:400,700);
 
 $primary: #10347c;
-$secondary: #fbf4f5;
+$secondary: #f0f5ef;
 $tertiary: #F0A120;
 
-$font-family: "Raleway", "Helvetica Neue",Helvetica,Arial,sans-serif;
+$font-family: "Roboto", "Helvetica Neue",Helvetica,Arial,sans-serif;
 
 body {
   overflow-x: hidden;
@@ -191,56 +191,68 @@ section {
   }
 }
 
-section#our-tutors {
-  .socket-container {
-    .tcs-col:hover {
-      text-decoration: none !important;
+.socket-container {
+  .tcs-col:hover {
+    text-decoration: none !important;
+  }
+  .tcs-flex .tcs-col .tcs-box {
+    box-shadow: None;
+    background-color: $primary;
+    .tcs-thumb {
+      border-radius: 0;
     }
-    .tcs-box {
-      box-shadow: None;
+    .stars.fa {
+      font-size: 20px;
+      padding: 4px;
+      color: gold;
+    }
+    .tcs-name {
+      background-color: $primary;
+      border: 1px solid $primary;
+      border-radius: 0 0 3px 3px;
+      transition: all .5s ease;
+      padding: 5px 0;
+      font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    &:hover {
+      transition: all .5s ease-in-out;
 
       .tcs-name {
-        background-color: $primary;
+        background-color: white;
+        color: $primary;
         border: 1px solid $primary;
-        border-radius: 0 0 3px 3px;
-        transition: all .5s ease;
-        padding: 5px 0;
-        font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
+    }
+  }
 
-      &:hover {
-        transition: all .5s ease-in-out;
+  .tcs-modal, .tcs {
+    h2 {
+      color: $primary;
+    }
 
-        .tcs-name {
-          background-color: white;
-          color: $primary;
-          border: 1px solid $primary;
-        }
+    .tcs-skills {
+      span {
+        background: $primary;
       }
     }
 
-    .tcs-modal {
-      h2 {
-        color: $primary;
-      }
+    button {
+      background: white;
+      color: $primary;
+      border: solid 2px $primary;
 
-      .tcs-skills {
-        span {
-          background: $primary;
-        }
-      }
-
-      button {
-        background: white;
-        color: $primary;
+      &:hover, &:focus, &:active, &.active {
         border: solid 2px $primary;
-
-        &:hover, &:focus, &:active, &.active {
-          border: solid 2px $primary;
-          color: white;
-          background: $primary;
-        }
+        color: white;
+        background: $primary;
       }
+    }
+  }
+  .tcs-md {
+    text-align: center;
+    p {
+      font-size: 20px;
     }
   }
 }
@@ -267,9 +279,6 @@ h3 .tutor-signup {
 }
 
 footer {
-  &.primary-dark {
-    background-color: #4678AE;
-  }
   h3 {
     margin-bottom: 30px;
   }
