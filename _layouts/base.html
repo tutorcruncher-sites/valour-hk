@@ -25,21 +25,21 @@
 
   <body id="page-top">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar fixed-top navbar-expand-lg">
       <a class="navbar-brand" href="{% if page.url == '/' %}#{% else %}/{% endif %}">
         <img id="navbar-logo" src="/static/img/logo.png"/>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" target="_blank" href="{% if page.url != '/'%}/{% endif %}#about">About</a>
+            <a class="nav-link" href="{% if page.url != '/'%}/{% endif %}#about">About</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" target="_blank" href="{% if page.url != '/'%}/{% endif %}#our-tutors">Our Tutors</a>
+            <a class="nav-link" href="{% if page.url != '/'%}/{% endif %}#our-tutors">Our Tutors</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" target="_blank" href="{{ site.tutorcruncher_url }}/">Log in</a>
@@ -64,7 +64,7 @@
             <b>{{ site.email }}</b>
           </p>
           <p class="text-muted">
-            Company Registration Number: xx-xx-xxx. VAT Number: xxx-xx-xxx.
+            Company Registration Number: 2875662.
           </p>
         </div>
       </div>
@@ -73,8 +73,9 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    {% if site.ga_analytics_key %}
-      <script>
+    <script src="https://cdn.tutorcruncher.com/socket/latest/socket.js"></script>
+    <script>
+      {% if site.ga_analytics_key %}
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -82,70 +83,72 @@
 
         ga('create', '{{ site.ga_analytics_key }}', 'auto');
         ga('send', 'pageview');
-      </script>
-    {% endif %}
-    {% if site.socket_key %}
-      <script src="https://cdn.tutorcruncher.com/socket/latest/socket.js"></script>
-      <script>
-        socket('{{ site.socket_key }}', {
-          mode: 'enquiry-modal',
-          element: '#socket-enquiry-modal',
-          router_mode: 'history'
-        })
-        socket('{{ site.socket_key }}', {
-          mode: 'enquiry',
-          element: '#socket-enquiry',
-          router_mode: 'history'
-        })
+      {% endif %}
+      socket('{{ site.socket_key }}', {
+        mode: 'enquiry-modal',
+        element: '#socket-enquiry-modal',
+        router_mode: 'history'
+      })
+      socket('{{ site.socket_key }}', {
+        mode: 'enquiry',
+        element: '#socket-enquiry',
+        router_mode: 'history'
+      })
 
-        let tutors_data = []
+      let tutors_data = []
 
-        function convert_data (tutors_data) {
-          let new_data = {}
-          tutors_data['results'].forEach(function (el) {
-            new_data['/' + el['link']] = el['review_rating']
-          })
-          return new_data
-        }
-        socket('{{ site.socket_key }}', {
-          router_mode: 'history',
-          mode: 'grid',
-          pagination: 15,
-          messages: {
-            subject_filter_placeholder: 'Click here to filter our tutors by subject'
-          },
-          show_location_search: false,
-          event_callback: () => {
-            if ($('.fa-star').length) {
-              return
-            }
-            $.get('https://socket.tutorcruncher.com/{{ site.socket_key }}/contractors?pagination=15&sort=review_rating&page=1', function(data) {
-              tutors_data = data
-              const con_data = convert_data(tutors_data)
-              $('.tcs-animate-entry').each(function () {
-                const $this = $(this)
-                let stars = con_data[$this.attr('href')]
-                let whole_stars = Math.floor(stars)
-                let dec = Math.abs(whole_stars - stars)
-                let stars_html = ''
-                if (dec < .25) {
-                  stars_html = '<span class="stars fa fa-star"></span>'.repeat(whole_stars)
-                  stars_html = stars_html + '<span class="stars fa fa-star-o"></span>'.repeat(5 - whole_stars)
-                } else if (.25 <= dec < .75) {
-                  stars_html = stars_html + '<span class="stars fa fa-star-half-o"></span>'
-                  stars_html = stars_html + '<span class="stars fa fa-star-o"></span>'.repeat(5 - whole_stars - 1)
-                } else {
-                  whole_stars = whole_stars + 1
-                  stars_html = '<span class="stars fa fa-star"></span>'.repeat(whole_stars)
-                  stars_html = stars_html + '<span class="stars fa fa-star-o"></span>'.repeat(5 - whole_stars)
-                }
-                $($this.children(0)).prepend(stars_html)
-              })
-            })
+      function convert_data (tutors_data) {
+        let new_data = {}
+        tutors_data['results'].forEach(function (el) {
+          new_data['/' + el['link']] = el['review_rating']
+        })
+        return new_data
+      }
+      socket('{{ site.socket_key }}', {
+        router_mode: 'history',
+        mode: 'grid',
+        pagination: 15,
+        messages: {
+          subject_filter_placeholder: 'Click here to filter our tutors by subject'
+        },
+        show_location_search: false,
+        event_callback: () => {
+          if ($('.fa-star').length) {
+            return
           }
-        })
-      </script>
-    {% endif %}
+          $.get('https://socket.tutorcruncher.com/{{ site.socket_key }}/contractors?pagination=15&sort=review_rating&page=1', function(data) {
+            tutors_data = data
+            const con_data = convert_data(tutors_data)
+            $('.tcs-animate-entry').each(function () {
+              const $this = $(this)
+              let stars = con_data[$this.attr('href')]
+              let whole_stars = Math.floor(stars)
+              let dec = Math.abs(whole_stars - stars)
+              let stars_html = ''
+              if (dec < .25) {
+                stars_html = '<span class="stars fa fa-star"></span>'.repeat(whole_stars)
+                stars_html = stars_html + '<span class="stars fa fa-star-o"></span>'.repeat(5 - whole_stars)
+              } else if (.25 <= dec < .75) {
+                stars_html = stars_html + '<span class="stars fa fa-star-half-o"></span>'
+                stars_html = stars_html + '<span class="stars fa fa-star-o"></span>'.repeat(5 - whole_stars - 1)
+              } else {
+                whole_stars = whole_stars + 1
+                stars_html = '<span class="stars fa fa-star"></span>'.repeat(whole_stars)
+                stars_html = stars_html + '<span class="stars fa fa-star-o"></span>'.repeat(5 - whole_stars)
+              }
+              $($this.children(0)).prepend(stars_html)
+            })
+          })
+        }
+      })
 
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 175) {
+          $('.navbar').addClass('affix')
+        } else {
+          $('.navbar').removeClass('affix')
+        }
+      })
+    </script>
   </body>
 </html>

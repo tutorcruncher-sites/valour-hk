@@ -23,6 +23,12 @@ p, li {
   &.small {
     font-size: 16px;
   }
+  @media (max-width: 767px) {
+    font-size: 16px;
+    &.small {
+      font-size: 12px;
+    }
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -59,40 +65,8 @@ hr {
   }
 }
 
-
 .primary-dark {
   background-color: white;
-}
-
-header {
-  height: 200px;
-  background: url('/static/img/header2.jpg');
-  background-position: center;
-  background-size: 100%;
-  @media (max-width: 767px) {
-    height: 200px;
-  }
-  .intro-text {
-    h1 {
-      font-size: 2.5em;
-      font-weight: 700;
-    }
-    h2 {
-      font-size: 22px;
-    }
-  }
-  @media (min-width: 768px) {
-    min-height: 400px;
-    .container {
-      padding-top: 200px;
-      padding-bottom: 100px;
-    }
-    .intro-text {
-      h1 {
-        font-size: 4.75em;
-      }
-    }
-  }
 }
 
 .navbar {
@@ -101,6 +75,11 @@ header {
   font-weight: 700;
   border-bottom: none;
   padding: 20px;
+  transition: all .5s ease;
+  &.affix {
+    padding: 10px;
+    border-bottom: 1px solid $primary;
+  }
   .navbar-brand {
     padding: 0 0 0 30px;
     #navbar-logo {
@@ -120,6 +99,19 @@ header {
       }
     }
   }
+  .navbar-collapse.collapse.show {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $primary;
+  }
+
+  .navbar-toggler-icon {
+    height: 24px;
+    .fa {
+      font-size: 28px;
+      color: $primary;
+    }
+  }
+
   #navbar {
     padding-right: 20px;
     padding-left: 20px;
@@ -128,45 +120,53 @@ header {
     .tcs-centre {
       color: $primary;
     }
-    .tcs-enquiry-button {
-      background: none;
-      color: $primary;
-      margin-top: 3px;
-      @media (min-width: 768px) {
-        color: white;
-        background: $primary;
-        border: solid 2px $primary;
-        &:hover {
-          color: $primary;
-          background: transparent;
-          text-decoration: none !important;
-        }
-      }
-    }
-    .tcs-submit {
-      button {
-        background: $primary;
-        border: solid 2px $primary;
-        &:hover {
-          color: $primary;
-          background: transparent;
-          text-decoration: none !important;
-        }
+    .tcs-enquiry-button, .tcs-submit>button {
+      background: $primary;
+      border: solid 2px $primary;
+
+      &:hover {
+        color: $primary;
+        background: transparent;
+        text-decoration: none !important;
       }
     }
   }
   @media (max-width: 767px) {
-    padding: 0;
-    background: $primary;
-    #navbar-logo {
-      content: url("/static/img/logo.png");
-      padding: 10px;
+    &.affix {
+      padding: 0;
     }
-    .tcs-enquiry-modal {
-      .tcs-enquiry-button {
-        color: white;
+    padding: 0;
+    .navbar-brand {
+      padding: 5px;
+      #navbar-logo {
+        height: 50px;
+        padding: 10px;
       }
     }
+  }
+}
+
+header {
+  margin-top: 100px;
+  height: 200px;
+  background: url('/static/img/header2.jpg');
+  background-position: center;
+  background-size: 100%;
+  @media (max-width: 767px) {
+    height: 200px;
+    margin-top: 60px;
+  }
+  .intro-text {
+    h1 {
+      font-size: 2.5em;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 22px;
+    }
+  }
+  @media (min-width: 768px) {
+    min-height: 400px;
   }
 }
 
@@ -176,7 +176,7 @@ section {
     margin: 0;
     font-size: 3em;
     @media (max-width: 767px) {
-      font-size: 2.5em;
+      font-size: 34px;
     }
   }
   &.success {
@@ -238,14 +238,13 @@ section {
     }
 
     button {
-      background: white;
-      color: $primary;
+      background: $primary;
       border: solid 2px $primary;
 
-      &:hover, &:focus, &:active, &.active {
-        border: solid 2px $primary;
-        color: white;
-        background: $primary;
+      &:hover {
+        color: $primary;
+        background: transparent;
+        text-decoration: none !important;
       }
     }
   }
