@@ -16,7 +16,7 @@ exclude:
 include:
   - _redirects
 address: Golden Sun Centre, 59-67 Bonham Strand West, Sheung Wan, Hong Kong
-phone: 1-555-444-444
+phone:
 social:
   - title: twitter
     url:
