@@ -49,19 +49,6 @@ p, ol, li {
   font-size: 12px;
 }
 
-h5 {
-  font-size: 20px;
-  &.small {
-    font-size: 16px;
-  }
-  @media (max-width: 767px) {
-    font-size: 16px;
-    &.small {
-      font-size: 12px;
-    }
-  }
-}
-
 hr {
   margin: 25px auto 30px;
   padding: 0;
@@ -169,9 +156,15 @@ hr {
 }
 
 header {
-  margin-top: 80px;
-  height: 80px;
-}
+  margin-top: 100px;
+  height: 200px;
+  background: url('/static/img/header2.jpg');
+  background-position: center;
+  background-size: 100%;
+  @media (max-width: 767px) {
+    height: 200px;
+    margin-top: 60px;
+  }
   .intro-text {
     h1 {
       font-size: 2.5em;
@@ -182,7 +175,7 @@ header {
     }
   }
   @media (min-width: 768px) {
-    min-height: 40px;
+    min-height: 400px;
   }
 }
 
@@ -202,7 +195,7 @@ section {
   @media (max-width: 767px) {
     padding: 30px 0;
     &.first {
-      padding-top:75px;
+      padding-top: 75px;
     }
   }
 }
