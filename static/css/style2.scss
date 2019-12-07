@@ -156,8 +156,14 @@ hr {
 }
 
 header {
-  margin-top: 5px;
-  height: 5px;
+  margin-top: 100px;
+  height: 200px;
+  background: url('/static/img/header2.jpg');
+  background-position: center;
+  background-size: 100%;
+  @media (max-width: 767px) {
+    height: 200px;
+    margin-top: 60px;
   }
   .intro-text {
     h1 {
@@ -169,7 +175,7 @@ header {
     }
   }
   @media (min-width: 768px) {
-    min-height: 5px;
+    min-height: 400px;
   }
 }
 
