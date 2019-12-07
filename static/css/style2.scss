@@ -93,7 +93,7 @@ hr {
     padding: 0 0 0 30px;
     #navbar-logo {
       width: auto;
-      height: 10px;
+      height: 60px;
     }
   }
   .navbar-nav {
@@ -148,7 +148,7 @@ hr {
     .navbar-brand {
       padding: 5px;
       #navbar-logo {
-        height: 10px;
+        height: 50px;
         padding: 10px;
       }
     }
@@ -158,12 +158,6 @@ hr {
 header {
   margin-top: 100px;
   height: 200px;
-  background: url('/static/img/header2.jpg');
-  background-position: center;
-  background-size: 100%;
-  @media (max-width: 767px) {
-    height: 200px;
-    margin-top: 60px;
   }
   .intro-text {
     h1 {
@@ -180,7 +174,7 @@ header {
 }
 
 section {
-  padding: 10px 0;
+  padding: 50px 0;
   h2 {
     margin: 0;
     font-size: 3em;
@@ -195,7 +189,7 @@ section {
   @media (max-width: 767px) {
     padding: 30px 0;
     &.first {
-      padding-top: 10px;
+      padding-top: 75px;
     }
   }
 }
@@ -331,7 +325,7 @@ a {
 }
 
 .container.main {
-  padding-top: 45px;
+  padding-top: 75px;
   padding-bottom: 50px;
   &.narrow {
     max-width: 970px;
