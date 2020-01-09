@@ -34,13 +34,21 @@
         <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbar">
+     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li> <li class="nav-item active">
             <a class="nav-link" href="{% if page.url != '/'%}/{% endif %}#about">About</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="{% if page.url != '/'%}/{% endif %}#our-tutors">Our Tutors</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/terms.html">Terms</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/privacy.html">Privacy</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" target="_blank" href="{{ site.tutorcruncher_url }}/">Log in</a>
